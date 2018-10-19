@@ -12,7 +12,7 @@ long http_code;
  
   curl = curl_easy_init();
   if(curl) {
-    curl_easy_setopt(curl, CURLOPT_URL, "http://wa01.highside.net/sox/sotiris.wav");
+    curl_easy_setopt(curl, CURLOPT_URL, "http://test.example.com/test.wav");
 
     //
     curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
