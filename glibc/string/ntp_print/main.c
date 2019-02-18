@@ -73,10 +73,10 @@ static void test_rtt(void)
     struct timeval rtt_tv;
     double tmp_double;
     unsigned int dlsr_sec;
-    unsigned int dlsr_frac;
+    double dlsr_frac;
 
     // init value
-    dlsr = 191037;
+    dlsr = 81037;
     lsr = 3751289703;
 	timeval2ntp(now, &msw, &lsw);
 
@@ -94,11 +94,11 @@ static void test_rtt(void)
     rtt_tv = convert_rtt2tv(rtt);
     printf("test2: %ld.%ld\n", rtt_tv.tv_sec, rtt_tv.tv_usec);
 
-	tmp_double = dlsr / 65536;
+	tmp_double = (double)dlsr / 65536;
 	dlsr_sec = tmp_double;
 	dlsr_frac = tmp_double - dlsr_sec;
 
-    printf("test2: %ld, %u\n", rtt_tv.tv_usec, dlsr_frac * 1000000);
+    printf("test2: %lu, %u, %f\n", rtt_tv.tv_usec, dlsr_sec, dlsr_frac);
 	rtt_tv.tv_sec -= dlsr_sec;
 	rtt_tv.tv_usec -= dlsr_frac * 1000000;
     printf("test2: %ld.%ld\n", rtt_tv.tv_sec, rtt_tv.tv_usec);
