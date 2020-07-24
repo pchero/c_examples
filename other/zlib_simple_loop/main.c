@@ -70,7 +70,7 @@ static int is_compressed(char* buf) {
         return 0;
     }
 
-    if ((buf[0] & 0x78) && (buf[0] & 0x1F)) {
+    if ((buf[0] & 0x78) || (buf[0] & 0x1F)) {
         return 1;
     }
 
